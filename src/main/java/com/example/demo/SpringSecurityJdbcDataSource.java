@@ -7,5 +7,5 @@ public class SpringSecurityJdbcDataSource {
     public static void main(String[] args) {
 
     }
-   
+
 }

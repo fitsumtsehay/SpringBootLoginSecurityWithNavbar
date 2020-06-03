@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Secure Page</h1> <h4>Name: </h4> <p>[[${user.firstName}]] [[${user.lastName}]]</p> <br/>
+
+<h4>Email:</h4> <p th:text="${user.email}"></p>
+</body>
+</html>
