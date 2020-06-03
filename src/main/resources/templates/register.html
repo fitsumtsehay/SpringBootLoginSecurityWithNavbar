@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>New User Registration</h4>
+<form autocomplete="off"
+      action="#"
+      th:action="@{/register}"
+      th:object="${user}" method="post">
+    First Name
+    <input type="text" id="firstName" placeholder="First Name"
+           th:field="*{firstName}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('firstName')}"
+              th:errors="*{firstName}">First Name Error</span>
+    </strong></mark>
+    <br/>     Last Name
+    <input type="text" id="lastName" placeholder="Last Name"
+           th:field="*{lastName}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('lastName')}"
+              th:errors="*{lastName}">Last Name Error</span>
+    </strong></mark>
+    <br/>
+    Email
+    <input type="email" id="email" placeholder="Email"
+           th:field="*{email}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}">Email Error</span>
+    </strong></mark>
+    <br/>
+    Username
+    <input type="text" id="username" placeholder="Username"
+           th:field="*{username}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}">Username Error</span>
+    </strong></mark>
+    <br/>
+    Password
+    <input type="text" id="password" placeholder="Password"
+           th:field="*{password}"/>
+    <mark><strong>
+        <span th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">Password Error</span>
+</body>
+</html>
