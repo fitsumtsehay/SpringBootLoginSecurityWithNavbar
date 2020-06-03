@@ -1,11 +1,10 @@
 package com.example.demo;
-
+import org.hibernate.annotations.Tables;
 import javax.persistence.*;
 
 @Entity
-@Table(name="roles")
-
-public class Roll {
+@Table(name = "roles")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

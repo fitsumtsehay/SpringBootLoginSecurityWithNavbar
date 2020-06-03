@@ -22,6 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/**").hasAnyRole("ADMIN", "USER")
                 .and()
@@ -31,6 +32,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout=true").permitAll();
+        httpSecurity.csrf().ignoringAntMatchers("/h2-console/**");
+        httpSecurity.headers().frameOptions().sameOrigin();
 
     }
 @Autowired
@@ -41,9 +44,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             Exception {
         auth.jdbcAuthentication()
         .dataSource(dataSource)
-        .usersByUsernameQuery("select username, password, enabled from"
-        + "users_db where username=?")
-        .authoritiesByUsernameQuery("select username, role from roles"
+        .usersByUsernameQuery("select username, password, enabled from "
+        + "user_db where username=?")
+        .authoritiesByUsernameQuery("select username, role from roles "
         +  "where username=?");
 
     }
