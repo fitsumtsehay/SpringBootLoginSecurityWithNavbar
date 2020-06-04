@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-"SpringBoot_404_LoginSecurity" 
-"SpringBoot_4.05_authentication" 
-=======
-Spring Boot Login Security 
-"SpringBoot406_Login_Register" 
+
+SpringBoot_4.04_LoginSecurity
+SpringBoot_4.05_authentication
+SpringBoot 4.06 Registration
+
