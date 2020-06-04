@@ -20,6 +20,9 @@ public class HomeController {
 @Autowired
 UserRepository userRepository;
 
+@Autowired
+RoleRepository roleRepository;
+
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model)
     { String username = principal.getName(); model.addAttribute("user", userRepository.findByUsername(username));
