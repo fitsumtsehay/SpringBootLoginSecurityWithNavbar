@@ -20,6 +20,10 @@ public class HomeController {
 @Autowired
 UserRepository userRepository;
 
+@Autowired
+RoleRepository roleRepository;
+
+
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model)
     { String username = principal.getName(); model.addAttribute("user", userRepository.findByUsername(username));
@@ -51,7 +55,8 @@ UserRepository userRepository;
     @GetMapping("/register")
     public String showRegisterationPage(Model model) {
         model.addAttribute("user", new User());
-        return "register"; }
+        return "register";
+    }
 
     @PostMapping("/register")
     public String processRegisterationPage(
@@ -60,7 +65,7 @@ UserRepository userRepository;
         model.addAttribute("user", user);
         if (result.hasErrors()) {
             return "register";
-        }     else {
+        } else {
             model.addAttribute("message", "User Account Created");
 
             user.setEnabled(true);
@@ -68,8 +73,10 @@ UserRepository userRepository;
             Set<Role> roles = new HashSet<Role>();
             roles.add(role);
 
-        roleRepository.save(role);
-        userRepository.save(user);
-        }     return "index";
+            roleRepository.save(role);
+            userRepository.save((user));
+        }
+        return "index";
     }
-}
+    }
+
