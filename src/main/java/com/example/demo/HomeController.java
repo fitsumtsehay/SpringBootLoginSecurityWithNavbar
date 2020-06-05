@@ -17,17 +17,16 @@ import java.util.Set;
 @Controller
 public class HomeController {
 
-@Autowired
-UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-@Autowired
-RoleRepository roleRepository;
-
+    @Autowired
+    RoleRepository roleRepository;
 
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model)
     { String username = principal.getName(); model.addAttribute("user", userRepository.findByUsername(username));
-    return "secure";
+        return "secure";
     }
 
     @RequestMapping("/")
@@ -55,8 +54,7 @@ RoleRepository roleRepository;
     @GetMapping("/register")
     public String showRegisterationPage(Model model) {
         model.addAttribute("user", new User());
-        return "register";
-    }
+        return "register"; }
 
     @PostMapping("/register")
     public String processRegisterationPage(
@@ -65,7 +63,7 @@ RoleRepository roleRepository;
         model.addAttribute("user", user);
         if (result.hasErrors()) {
             return "register";
-        } else {
+        }     else {
             model.addAttribute("message", "User Account Created");
 
             user.setEnabled(true);
@@ -74,9 +72,7 @@ RoleRepository roleRepository;
             roles.add(role);
 
             roleRepository.save(role);
-            userRepository.save((user));
-        }
-        return "index";
+            userRepository.save(user);
+        }     return "index";
     }
-    }
-
+}
